@@ -7,7 +7,7 @@
     <div class="nav-menu-header-popper" v-if="collapse"></div>
     <!-- 可以插入template -->
     <el-menu
-      :default-active="'0'"
+      :default-active="String(defaultActive)"
       :unique-opened="true"
       :collapse="collapse"
       :collapse-transition="false"
@@ -53,9 +53,16 @@ export default defineComponent({
 
     const { userMenus } = useLoginStore()
 
+    let defaultActive = 0
+    for (const key in userMenus) {
+      if (userMenus[key].path === router.currentRoute.value.path)
+        defaultActive = userMenus[key].id
+    }
+
     return {
       handleMenuItemClick,
-      userMenus
+      userMenus,
+      defaultActive
     }
   }
 })
