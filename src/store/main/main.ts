@@ -81,7 +81,6 @@ const useMainStore = defineStore("main", () => {
     }
 
     payload.queryInfo.record = lastQueryInfoRecord
-    console.log(payload.queryInfo.record)
 
     // 发送请求
     const pageResult = await searchPageListData({
