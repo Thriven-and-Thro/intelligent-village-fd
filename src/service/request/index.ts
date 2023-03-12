@@ -52,11 +52,14 @@ class CFRequest {
 
         const data = res.data
 
-        if (data.returnCode === "-1001") {
-          console.log("Error")
+        try {
+          if (data.returnCode === "-1001") {
+            ElMessage.error("未知错误")
+          } else {
+            return data
+          }
+        } catch {
           ElMessage.error("未知错误")
-        } else {
-          return data
         }
       },
       (err) => {

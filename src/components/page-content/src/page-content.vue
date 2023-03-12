@@ -68,6 +68,7 @@ import { useMainStore } from "@/store"
 import localCache from "@/utils/cache"
 
 import { CfTable } from "@/basic-ui/table"
+import { mapArticle } from "@/utils/map-article"
 
 export default defineComponent({
   name: "PageContent",
@@ -128,11 +129,15 @@ export default defineComponent({
 
     // 按钮
     const handleDeleteClick = async (item: any) => {
+      let idName = `${props.pageName.slice(0, 3)}_id`
+      if (props.pageName in mapArticle) idName = "art_id"
+
       await deletePageDateAction({
         pageName: props.pageName,
-        id: item[`${props.pageName.slice(0, 3)}_id`]
+        id: item[idName]
       })
     }
+
     const handleNewClick = () => {
       emit("newBtnClick")
     }

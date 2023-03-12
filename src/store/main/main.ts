@@ -11,6 +11,7 @@ import {
 
 import formatTime from "@/global/register-properties"
 import { searchPageListData } from "@/service/main/search"
+import { mapArticle } from "@/utils/map-article"
 
 const useMainStore = defineStore("main", () => {
   // 建立对象是为了方便动态获取、写入数据
@@ -56,16 +57,34 @@ const useMainStore = defineStore("main", () => {
     setStoreCount(pageName, pageResult[0].count)
   }
 
+  // 处理pageName
+  function pageNameOpt(payload: any, requestData?: any) {
+    // 动态获取请求信息
+    let pageName = payload.pageName
+
+    // article页面的特殊处理
+    if (pageName in mapArticle) {
+      pageName = "article"
+      if (requestData) requestData.type = mapArticle[payload.pageName]
+    }
+
+    return pageName
+  }
+
   // 模糊搜索
   async function searchPageListAction(payload: any) {
-    // 动态获取请求信息
-    const pageName = payload.pageName
+    // 发送的请求体
+    const requestData = {
+      ...payload.queryInfo
+    }
+
+    const pageName = pageNameOpt(payload, requestData)
 
     const lastQueryInfoRecord: any = {},
       queryInfoRecord = payload.queryInfo.record
 
+    // 对时间进行处理
     for (const key in queryInfoRecord) {
-      // 对时间进行处理
       if (key === "updateTime") {
         lastQueryInfoRecord.updateTime = [
           queryInfoRecord.updateTime[0] + " 00:00:00",
@@ -82,14 +101,14 @@ const useMainStore = defineStore("main", () => {
 
     payload.queryInfo.record = lastQueryInfoRecord
 
-    // 发送请求
     const pageResult = await searchPageListData({
       table: pageName,
-      ...payload.queryInfo
+      ...requestData
     })
 
     pageListInfo.record = lastQueryInfoRecord
-    dataOpt(pageName, pageResult)
+
+    dataOpt(payload.pageName, pageResult)
   }
 
   async function againRequestPageData(pageName: string) {
@@ -106,18 +125,20 @@ const useMainStore = defineStore("main", () => {
 
   // 删除
   async function deletePageDateAction(payload: any) {
-    const { pageName, id } = payload
+    const { id } = payload
+    const pageName = pageNameOpt(payload)
     const pageUrl = `/${pageName}/${id}`
 
     await deletePageData(pageUrl)
 
     // 重新请求
-    await againRequestPageData(pageName)
+    await againRequestPageData(payload.pageName)
   }
 
   // 创建
   async function createPageDataAction(payload: any) {
-    const { pageName, newData } = payload
+    const pageName = pageNameOpt(payload)
+    const { newData } = payload
     const pageUrl = `/${pageName}`
 
     for (const key in newData) {
@@ -126,15 +147,20 @@ const useMainStore = defineStore("main", () => {
       }
     }
 
-    await createPageData(pageUrl, { ...newData, aid })
+    await createPageData(pageUrl, {
+      ...newData,
+      aid,
+      type: mapArticle[payload.pageName]
+    })
 
     // 重新请求
-    await againRequestPageData(pageName)
+    await againRequestPageData(payload.pageName)
   }
 
   // 编辑
   async function editPageDataAction(payload: any) {
-    const { pageName, editData, id } = payload
+    const pageName = pageNameOpt(payload)
+    const { editData, id } = payload
     const pageUrl = `/${pageName}/${id}`
 
     for (const key in editData) {
@@ -143,10 +169,13 @@ const useMainStore = defineStore("main", () => {
       }
     }
 
-    await editPageData(pageUrl, editData)
+    await editPageData(pageUrl, {
+      ...editData,
+      type: mapArticle[payload.pageName]
+    })
 
     // 重新请求
-    await againRequestPageData(pageName)
+    await againRequestPageData(payload.pageName)
   }
 
   return {

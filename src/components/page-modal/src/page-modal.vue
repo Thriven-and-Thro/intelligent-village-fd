@@ -27,6 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from "@vue/runtime-core"
+import { mapArticle } from "@/utils/map-article"
 
 import { CfForm } from "@/basic-ui/form"
 import { useMainStore } from "@/store"
@@ -96,10 +97,13 @@ export default defineComponent({
       dialogVisible.value = false
       // 编辑
       if (Object.keys(props.defaultInfo).length) {
+        let idName = `${props.pageName?.slice(0, 3)}_id`
+        if (props.pageName && props.pageName in mapArticle) idName = "art_id"
+
         await editPageDataAction({
           pageName: props.pageName,
           editData: { ...formData.value, ...props.otherInfo },
-          id: props.defaultInfo[`${props.pageName?.slice(0, 3)}_id`]
+          id: props.defaultInfo[idName]
         })
         // 新建
       } else {
