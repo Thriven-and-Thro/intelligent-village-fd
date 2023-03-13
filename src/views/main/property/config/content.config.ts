@@ -3,7 +3,7 @@ const contentTableConfig = {
   propList: [
     { prop: "art_id", label: "资产ID", minWidth: "60" },
     { prop: "title", label: "标题", minWidth: "160" },
-    { prop: "content", label: "内容摘要", minWidth: "160" },
+    { prop: "content", label: "详情", minWidth: "60", slotName: "content" },
     {
       prop: "updateTime",
       label: "更新时间",

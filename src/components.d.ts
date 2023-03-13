@@ -44,6 +44,7 @@ declare module '@vue/runtime-core' {
     NavHeader: typeof import('./components/nav-header/src/nav-header.vue')['default']
     NavHeaderInfo: typeof import('./components/nav-header/src/nav-header-info.vue')['default']
     NavMenu: typeof import('./components/nav-menu/src/nav-menu.vue')['default']
+    Note: typeof import('./components/note/src/note.vue')['default']
     PageContent: typeof import('./components/page-content/src/page-content.vue')['default']
     PageModal: typeof import('./components/page-modal/src/page-modal.vue')['default']
     PageSearch: typeof import('./components/page-search/src/page-search.vue')['default']
