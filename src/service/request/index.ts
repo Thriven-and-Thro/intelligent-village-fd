@@ -1,11 +1,14 @@
 import axios from "axios"
 import type { AxiosInstance } from "axios"
 
+// 引入loading的样式
+import "element-plus/es/components/loading/style/css"
+
 import type { CFRequestInterceptors, CFRequestConfig } from "./type"
 
 import { ElLoading, ElMessage } from "element-plus"
 
-const DEAFULT_LOADING = false
+const DEAFULT_LOADING = true
 
 class CFRequest {
   instance: AxiosInstance
@@ -36,7 +39,7 @@ class CFRequest {
           this.loading = ElLoading.service({
             lock: true,
             text: "正在请求...",
-            background: "rgba(0,0,0,0.5)"
+            background: "rgba(255,255,255,0.5)"
           })
         }
         return config
