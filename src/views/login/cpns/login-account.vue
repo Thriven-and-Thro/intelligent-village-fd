@@ -102,6 +102,11 @@ export default defineComponent({
 <style lang="less" scoped>
 .login-account {
   padding-top: 15px;
+
+  :deep(label) {
+    font-weight: 500;
+  }
+
   .el-input {
     width: 90%;
   }
@@ -109,12 +114,15 @@ export default defineComponent({
   :deep(.distpicker-address-wrapper) {
     height: 31px;
     width: 100%;
+    label {
+      display: contents;
+    }
     select {
       padding: 0rem 0.75rem;
       height: 31px;
       min-width: 30%;
       max-width: 30%;
-      width: 30%;
+      width: 100%;
     }
   }
 }

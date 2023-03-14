@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import zhCn from "element-plus/lib/locale/lang/zh-cn"
+import { ElConfigProvider } from "element-plus"
 </script>
 
 <style lang="less">

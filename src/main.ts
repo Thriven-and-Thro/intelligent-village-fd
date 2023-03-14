@@ -4,11 +4,10 @@ import { createPinia } from "pinia"
 import App from "./App.vue"
 import router from "./router"
 
-import "./assets/css/index.less"
-import "normalize.css"
 // import "element-plus/es/components/message/style/css"
 import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 import { useLoginStore } from "./store"
+import "./assets/css/index.less"
 
 const app = createApp(App)
 

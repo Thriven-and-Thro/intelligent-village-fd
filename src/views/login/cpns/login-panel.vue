@@ -102,7 +102,6 @@ export default defineComponent({
   .tab-select {
     display: flex;
     margin-bottom: 15px;
-    padding: 0 20px;
     width: 417px;
     height: 20px;
     justify-content: space-between;
