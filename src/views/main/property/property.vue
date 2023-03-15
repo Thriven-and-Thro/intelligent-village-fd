@@ -11,6 +11,7 @@
       ref="pageContentRef"
       @newBtnClick="handleNewData"
       @editBtnClick="handleEditData"
+      @batchRemoveClick="handleBatchRemoveClick"
       ><template #name>新建资产</template>
       <template #content="scope">
         <el-link type="primary" @click="handleEditNote(scope.row)"
@@ -51,6 +52,7 @@ import { usePageSearch } from "@/hooks/use-page-search"
 import { usePageModal } from "@/hooks/use-page-modal"
 import { usePageNote } from "@/hooks/use-page-note"
 import { usePageComment } from "@/hooks/use-page-comment"
+import { usePageContent } from "@/hooks/use-page-content"
 
 import contentTableConfig from "./config/content.config"
 import searchFormConfig from "./config/search.config"
@@ -63,7 +65,10 @@ const [pageModalRef, defaultInfo, handleNewData, handleEditData]: any =
   usePageModal()
 
 const [pageNoteRef, defaultnote, handleEditNote]: any = usePageNote()
+
 const [pageCommentRef, handleEditComment]: any = usePageComment()
+
+const [handleBatchRemoveClick]: any = usePageContent()
 </script>
 
 <style scoped></style>

@@ -12,6 +12,7 @@ import {
 import formatTime from "@/global/register-properties"
 import { searchPageListData } from "@/service/main/search"
 import { mapArticle } from "@/utils/map-article"
+import { batchRemovePageData } from "@/service/main/batchRemove"
 
 const useMainStore = defineStore("main", () => {
   // 建立对象是为了方便动态获取、写入数据
@@ -185,6 +186,7 @@ const useMainStore = defineStore("main", () => {
     mainStore,
     pageListInfo,
 
+    againRequestPageData,
     deletePageDateAction,
     createPageDataAction,
     editPageDataAction,

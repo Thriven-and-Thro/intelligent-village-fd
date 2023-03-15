@@ -9,9 +9,12 @@
       :contentTableConfig="contentTableConfig"
       page-name="feedback"
       ref="pageContentRef"
-      @newBtnClick="handleNewData"
       @editBtnClick="handleEditData"
-      ><template #name>新建反馈</template>
+      @batchRemoveClick="handleBatchRemoveClick"
+    >
+      <template #newHandler>
+        <span></span>
+      </template>
       <!-- 插入状态插槽 -->
       <template #state="scope">
         <el-tag :type="statusTag(scope.row.state)">{{
@@ -36,6 +39,7 @@ import { PageModal } from "@/components/page-modal"
 
 import { usePageSearch } from "@/hooks/use-page-search"
 import { usePageModal } from "@/hooks/use-page-modal"
+import { usePageContent } from "@/hooks/use-page-content"
 
 import contentTableConfig from "./config/content.config"
 import searchFormConfig from "./config/search.config"
@@ -53,8 +57,12 @@ const editCallback = () => {
   modalConfig.formItems[1].isHidden = true
 }
 
-const [pageModalRef, defaultInfo, handleNewData, handleEditData]: any =
-  usePageModal(newCallback, editCallback)
+const [pageModalRef, defaultInfo, handleEditData]: any = usePageModal(
+  newCallback,
+  editCallback
+)
+
+const [handleBatchRemoveClick]: any = usePageContent()
 
 const statusTitle = (value: number) => {
   switch (value) {

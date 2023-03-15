@@ -6,34 +6,21 @@
       v-bind="contentTableConfig"
       :tableCount="dataCount"
       v-model:page="pageInfo"
+      @selectionChange="handleSelectChange"
     >
       <template #headerHandler>
-        <el-button type="primary" @click="handleNewClick">
-          <slot name="name">新建用户</slot>
-        </el-button>
+        <slot name="newHandler">
+          <el-button type="primary" @click="handleNewClick">
+            <slot name="name">新建用户</slot>
+          </el-button>
+        </slot>
+        <slot name="batchRemoveHandler">
+          <el-button type="danger" @click="handleBatchRemoveClick">
+            批量删除
+          </el-button>
+        </slot>
       </template>
 
-      <!-- 普通作用域插槽 -->
-      <!--
-        在 CfTable 中插入一些通用的内容（使用 CfTable 提供的作用域插槽），
-        使用 v-if 和配置信息控制是否显示。
-        配置信息直接传入 CfTable，插入的内容中通过作用域插槽 scope 获得数据
-      -->
-      <!-- <template #status="scope">
-        <el-button
-          plain
-          size="mini"
-          :type="scope.row.enable ? 'success' : 'danger'"
-        >
-          {{ scope.row.enable ? "启用" : "禁用" }}
-        </el-button>
-      </template> -->
-      <!-- <template #createTime="scope">
-        <span>{{ $filters.formatTime(scope.row.createTime) }}</span>
-      </template>
-      <template #updateTime="scope">
-        <span>{{ $filters.formatTime(scope.row.updateTime) }}</span>
-      </template> -->
       <template #handler="scope">
         <div class="handle-btns">
           <el-link type="primary" @click="handleEditClick(scope.row)"
@@ -85,7 +72,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ["newBtnClick", "editBtnClick"],
+  emits: ["newBtnClick", "editBtnClick", "batchRemoveClick"],
   setup(props, { emit }) {
     const {
       deletePageDateAction,
@@ -146,6 +133,20 @@ export default defineComponent({
       emit("editBtnClick", item)
     }
 
+    // 记录选中
+    const deleteitems = ref<any>([])
+
+    // 监听选择框
+    const handleSelectChange = (items: any[]) => {
+      if (items.length !== 0) {
+        deleteitems.value = items
+      }
+    }
+
+    const handleBatchRemoveClick = () => {
+      emit("batchRemoveClick", deleteitems.value, props.pageName)
+    }
+
     // 第一次进入调用
     getPageData()
 
@@ -157,7 +158,9 @@ export default defineComponent({
       otherPropSlots,
       handleDeleteClick,
       handleNewClick,
-      handleEditClick
+      handleEditClick,
+      handleSelectChange,
+      handleBatchRemoveClick
     }
   }
 })
