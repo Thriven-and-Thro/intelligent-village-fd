@@ -23,7 +23,9 @@ const useMainStore = defineStore("main", () => {
     propertyList: [],
     propertyCount: 0,
     projectList: [],
-    projectCount: 0
+    projectCount: 0,
+    commentList: [],
+    commentCount: 0
   })
 
   const pageListInfo = reactive({
@@ -111,20 +113,21 @@ const useMainStore = defineStore("main", () => {
     dataOpt(payload.pageName, pageResult)
   }
 
-  async function againRequestPageData(pageName: string) {
+  async function againRequestPageData(pageName: string, query: any = {}) {
     await searchPageListAction({
       pageName,
       queryInfo: {
         offset: pageListInfo.offset,
         limit: pageListInfo.limit,
         aid: aid,
-        record: pageListInfo.record
+        record: pageListInfo.record,
+        ...query
       }
     })
   }
 
   // 删除
-  async function deletePageDateAction(payload: any) {
+  async function deletePageDateAction(payload: any, query: any = {}) {
     const { id } = payload
     const pageName = pageNameOpt(payload)
     const pageUrl = `/${pageName}/${id}`
@@ -132,7 +135,7 @@ const useMainStore = defineStore("main", () => {
     await deletePageData(pageUrl)
 
     // 重新请求
-    await againRequestPageData(payload.pageName)
+    await againRequestPageData(payload.pageName, query)
   }
 
   // 创建

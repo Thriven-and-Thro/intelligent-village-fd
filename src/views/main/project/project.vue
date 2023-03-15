@@ -14,7 +14,12 @@
       ><template #name>新建项目</template>
       <template #content="scope">
         <el-link type="primary" @click="handleEditNote(scope.row)"
-          >查看</el-link
+          >查看详情</el-link
+        >
+      </template>
+      <template #comment="scope">
+        <el-link type="primary" @click="handleEditComment(scope.row.art_id)"
+          >查看评论</el-link
         >
       </template>
     </page-content>
@@ -31,6 +36,7 @@
       ref="pageNoteRef"
       :default-info="defaultnote"
     ></note>
+    <comment ref="pageCommentRef" page-name="comment"></comment>
   </div>
 </template>
 
@@ -39,10 +45,12 @@ import { PageSearch } from "@/components/page-search"
 import { PageContent } from "@/components/page-content"
 import { PageModal } from "@/components/page-modal"
 import { Note } from "@/components/note"
+import { Comment } from "@/components/comment"
 
 import { usePageSearch } from "@/hooks/use-page-search"
 import { usePageModal } from "@/hooks/use-page-modal"
 import { usePageNote } from "@/hooks/use-page-note"
+import { usePageComment } from "@/hooks/use-page-comment"
 
 import contentTableConfig from "./config/content.config"
 import searchFormConfig from "./config/search.config"
@@ -55,6 +63,7 @@ const [pageModalRef, defaultInfo, handleNewData, handleEditData]: any =
   usePageModal()
 
 const [pageNoteRef, defaultnote, handleEditNote]: any = usePageNote()
+const [pageCommentRef, handleEditComment]: any = usePageComment()
 </script>
 
 <style scoped></style>

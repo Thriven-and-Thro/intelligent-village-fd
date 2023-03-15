@@ -67,7 +67,6 @@ export default defineComponent({
     // 点击确定
     const handleConfirmClick = async () => {
       dialogVisible.value = false
-      console.log(formData)
 
       await editPageDataAction({
         pageName: props.pageName,

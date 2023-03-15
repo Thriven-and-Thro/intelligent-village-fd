@@ -1,10 +1,9 @@
 const contentTableConfig = {
-  title: "项目列表",
+  title: "评论列表",
   propList: [
-    { prop: "art_id", label: "项目ID", minWidth: "60" },
-    { prop: "title", label: "标题", minWidth: "160" },
-    { prop: "content", label: "详情", minWidth: "60", slotName: "content" },
-    { prop: "comment", label: "评论", minWidth: "60", slotName: "comment" },
+    { prop: "com_id", label: "评论ID", minWidth: "60" },
+    { prop: "content", label: "详情", minWidth: "280", slotName: "content" },
+    { prop: "user_id", label: "发布者ID", minWidth: "90" },
     {
       prop: "updateTime",
       label: "更新时间",
