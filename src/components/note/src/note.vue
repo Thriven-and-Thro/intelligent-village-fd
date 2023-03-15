@@ -1,6 +1,12 @@
 <template>
   <div class="note">
-    <el-dialog v-model="dialogVisible" width="80%" center class="dialog">
+    <el-dialog
+      v-model="dialogVisible"
+      width="80%"
+      center
+      class="dialog"
+      title="详情内容"
+    >
       <CfSummernote
         @summernoteInput="logSummernoteInput"
         :value="defaultInfo.content"
@@ -83,3 +89,15 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped lang="less">
+.note {
+  :deep(.dialog) {
+    border-radius: 25px;
+
+    .el-dialog__body {
+      padding: 0 25px;
+    }
+  }
+}
+</style>

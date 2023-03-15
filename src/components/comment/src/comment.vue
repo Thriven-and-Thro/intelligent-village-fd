@@ -120,7 +120,6 @@ defineExpose({
 .comment {
   :deep(.dialog) {
     border-radius: 25px;
-    box-shadow: 0px 1px 5px hsl(0deg 0% 0% / 25%);
 
     .el-dialog__body {
       padding: 0;

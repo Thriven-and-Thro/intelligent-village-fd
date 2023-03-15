@@ -57,7 +57,7 @@ export default defineComponent({
         $("#" + self.id).summernote({
           lang: "zh-CN", //语言
           placeholder: "请输入内容", //提示语
-          height: 500, //高度
+          height: 250, //高度
           //  'auto',//宽度  也可以指定宽度
           htmlMode: true,
           toolbar: [
