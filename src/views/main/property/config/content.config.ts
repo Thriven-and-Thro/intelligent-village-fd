@@ -4,6 +4,7 @@ const contentTableConfig = {
     { prop: "art_id", label: "资产ID", minWidth: "60" },
     { prop: "title", label: "标题", minWidth: "160" },
     { prop: "content", label: "详情", minWidth: "60", slotName: "content" },
+    { prop: "comment", label: "评论", minWidth: "60", slotName: "comment" },
     {
       prop: "updateTime",
       label: "更新时间",
