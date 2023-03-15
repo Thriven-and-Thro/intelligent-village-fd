@@ -103,10 +103,6 @@ export default defineComponent({
 .login-account {
   padding-top: 15px;
 
-  :deep(label) {
-    font-weight: 500;
-  }
-
   .el-input {
     width: 90%;
   }
