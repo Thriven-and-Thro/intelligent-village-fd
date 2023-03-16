@@ -12,23 +12,34 @@
         v-bind="contentTableConfig"
         :tableCount="dataCount"
         v-model:page="pageInfo"
+        @selectionChange="handleSelectChange"
       >
         <template #header>
-          <el-input
-            v-model="input1"
-            class="w-50 m-2 header-search"
-            placeholder="请输入评论内容"
-            clearable
-          />
-          <el-input
-            v-model="input2"
-            class="w-50 m-2 header-search"
-            placeholder="请输入发布者ID"
-            clearable
-          />
-          <el-button type="primary" round @click="searchComment"
-            >搜索</el-button
-          >
+          <div class="comment-header">
+            <div class="comment-header-input">
+              <el-input
+                v-model="input1"
+                class="w-50 m-2 header-search"
+                placeholder="请输入评论内容"
+                clearable
+              />
+              <el-input
+                v-model="input2"
+                class="w-50 m-2 header-search"
+                placeholder="请输入发布者ID"
+                clearable
+              />
+            </div>
+
+            <div class="comment-header-button">
+              <el-button type="primary" round @click="searchComment"
+                >搜索</el-button
+              >
+              <el-button type="danger" round @click="handleBatchRemoveClick"
+                >批量删除</el-button
+              >
+            </div>
+          </div>
         </template>
         <template #handler="scope">
           <div class="handle-btns">
@@ -103,11 +114,28 @@ const handleDeleteClick = async (item: any) => {
 const input1 = ref("")
 const input2 = ref("")
 
+// 搜索
 const searchComment = () => {
   getCommentData({
     content: input1.value,
     user_id: input2.value
   })
+}
+
+// 记录选中
+const deleteitems = ref<any>([])
+
+// 监听选择框
+const handleSelectChange = (items: any[]) => {
+  if (items.length !== 0) {
+    deleteitems.value = items
+  }
+}
+
+const emits = defineEmits(["batchRemoveClick"])
+
+const handleBatchRemoveClick = () => {
+  emits("batchRemoveClick", deleteitems.value, props.pageName)
 }
 
 defineExpose({
@@ -132,6 +160,20 @@ defineExpose({
   }
   .header-search {
     width: 30%;
+  }
+
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .comment-header-input {
+      flex: 0 1 50%;
+      .el-input {
+        width: 45%;
+        padding-right: 10px;
+      }
+    }
   }
 }
 </style>

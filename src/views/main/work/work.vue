@@ -37,7 +37,11 @@
       ref="pageNoteRef"
       :default-info="defaultnote"
     ></note>
-    <comment ref="pageCommentRef" page-name="comment"></comment>
+    <comment
+      ref="pageCommentRef"
+      page-name="comment"
+      @batchRemoveClick="handleBatchRemoveClick"
+    ></comment>
   </div>
 </template>
 

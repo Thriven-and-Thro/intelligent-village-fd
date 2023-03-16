@@ -21,8 +21,11 @@ export function usePageContent() {
       })
     })
 
+    const query: any = {}
+    if (pageName === "comment") query.art_id = deleteitems[0].art_id
+
     const { againRequestPageData } = useMainStore()
-    againRequestPageData(pageName)
+    againRequestPageData(pageName, query)
   }
 
   return [handleBatchRemoveClick]

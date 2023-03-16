@@ -1,5 +1,5 @@
 const contentTableConfig = {
-  title: "资产列表",
+  title: "事务列表",
   propList: [
     { prop: "art_id", label: "事务ID", minWidth: "60" },
     { prop: "title", label: "标题", minWidth: "160" },
