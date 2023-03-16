@@ -2,39 +2,29 @@ import type { IForm } from "@/basic-ui/form"
 
 const modalConfig: IForm = reactive({
   formItems: [
+    // hidden，为了自动获取表单数据
     {
       field: "content",
       type: "textarea",
       label: "内容",
       placeholder: "请输入内容",
-      rules: [{ required: true, message: "内容不能为空" }]
+      isHidden: true
     },
     {
       field: "user_id",
       type: "number",
       label: "发布者ID",
       placeholder: "请输入发布者ID",
-      isHidden: true,
-      rules: [
-        {
-          required: true,
-          message: "发布者ID不能为空"
-        },
-        { type: "number", message: "ID必须是数字类型" }
-      ]
-    },
-    {
-      field: "area_reply",
-      type: "textarea",
-      label: "管理员回复",
-      placeholder: "请输入管理员回复内容"
+      isHidden: true
     },
     {
       field: "user_reply",
       type: "textarea",
       label: "反馈者评价",
-      placeholder: "请输入反馈者评价内容"
+      placeholder: "请输入反馈者评价内容",
+      isHidden: true
     },
+    //
     {
       field: "state",
       type: "select",
@@ -54,6 +44,13 @@ const modalConfig: IForm = reactive({
           value: 2
         }
       ]
+    },
+    {
+      field: "area_reply",
+      type: "textarea",
+      label: "管理员回复",
+      placeholder: "请输入管理员回复内容",
+      isHidden: true
     }
   ],
   colLayout: { span: 24 },

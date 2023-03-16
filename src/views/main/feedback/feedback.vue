@@ -48,19 +48,7 @@ import modalConfig from "./config/modal.config"
 const [pageContentRef, handleResetClick, handleQueryClick]: any =
   usePageSearch()
 
-// 根据按钮不同修改弹窗对应输入框是否隐藏
-const newCallback = () => {
-  modalConfig.formItems[1].isHidden = false
-}
-
-const editCallback = () => {
-  modalConfig.formItems[1].isHidden = true
-}
-
-const [pageModalRef, defaultInfo, handleEditData]: any = usePageModal(
-  newCallback,
-  editCallback
-)
+const [pageModalRef, defaultInfo, _, handleEditData]: any = usePageModal()
 
 const [handleBatchRemoveClick]: any = usePageContent()
 
@@ -89,6 +77,15 @@ const statusTag = (value: number) => {
       return "warning"
   }
 }
+
+// 监听状态改变时展示/隐藏管理员回复
+watchEffect(() => {
+  if (pageModalRef.value?.formData?.state > 0) {
+    modalConfig.formItems[4].isHidden = false
+  } else {
+    modalConfig.formItems[4].isHidden = true
+  }
+})
 </script>
 
 <style scoped></style>
