@@ -116,7 +116,11 @@ export default defineComponent({
     summerNoteChange() {
       //富文本编辑器发生改变
       var self = this
-      self.$emit("summernoteInput", $("#" + self.id).summernote("code"))
+      const content = $("#" + self.id)
+        .summernote("code")
+        .split("<td>")
+        .join('<td class="td">')
+      self.$emit("summernoteInput", content)
     }
   }
 })

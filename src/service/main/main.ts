@@ -28,7 +28,7 @@ export function createPageData(url: string, newData: any) {
 }
 
 export function editPageData(url: string, editData: any) {
-  return cfRequest.patch<IDataType>({
+  return cfRequest.post<IDataType>({
     url,
     data: editData
   })
