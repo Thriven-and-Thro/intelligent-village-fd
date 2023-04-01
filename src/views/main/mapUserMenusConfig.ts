@@ -4,16 +4,20 @@ const userMenusConfig = [
     chinaName: "反馈管理"
   },
   {
+    icon: "Tickets",
+    chinaName: "党务管理"
+  },
+  {
     icon: "MessageBox",
     chinaName: "项目管理"
   },
   {
     icon: "Coin",
-    chinaName: "资产管理"
+    chinaName: "财务管理"
   },
   {
     icon: "Tickets",
-    chinaName: "事务管理"
+    chinaName: "村务管理"
   }
 ]
 

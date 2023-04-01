@@ -1,7 +1,7 @@
 const contentTableConfig = {
-  title: "事务列表",
+  title: "党务列表",
   propList: [
-    { prop: "art_id", label: "事务ID", minWidth: "60" },
+    { prop: "art_id", label: "党务ID", minWidth: "60" },
     { prop: "title", label: "标题", minWidth: "160" },
     { prop: "content", label: "详情", minWidth: "60", slotName: "content" },
     { prop: "comment", label: "评论", minWidth: "60", slotName: "comment" },

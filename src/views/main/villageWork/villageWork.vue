@@ -7,12 +7,12 @@
     ></page-search>
     <page-content
       :contentTableConfig="contentTableConfig"
-      page-name="work"
+      page-name="villageWork"
       ref="pageContentRef"
       @newBtnClick="handleNewData"
       @editBtnClick="handleEditData"
       @batchRemoveClick="handleBatchRemoveClick"
-      ><template #name>新建事务</template>
+      ><template #name>新建村务</template>
       <template #content="scope">
         <el-link type="primary" @click="handleEditNote(scope.row)"
           >查看详情</el-link
@@ -25,9 +25,9 @@
       </template>
     </page-content>
     <page-modal
-      title="编辑事务"
+      title="编辑村务"
       :modalConfig="modalConfig"
-      page-name="work"
+      page-name="villageWork"
       ref="pageModalRef"
       :default-info="defaultInfo"
     ></page-modal>

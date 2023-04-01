@@ -19,8 +19,10 @@ const useMainStore = defineStore("main", () => {
   const mainStore: Record<string, any> = reactive({
     feedbackList: [],
     feedbackCount: 0,
-    workList: [],
-    workCount: 0,
+    partyWorkList: [],
+    partyWorkCount: 0,
+    villageWorkList: [],
+    villageWorkCount: 0,
     propertyList: [],
     propertyCount: 0,
     projectList: [],

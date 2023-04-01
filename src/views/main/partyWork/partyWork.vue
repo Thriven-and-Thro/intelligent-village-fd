@@ -1,5 +1,5 @@
 <template>
-  <div class="property">
+  <div class="work">
     <page-search
       :searchFormConfig="searchFormConfig"
       @resetBtnClick="handleResetClick"
@@ -7,12 +7,12 @@
     ></page-search>
     <page-content
       :contentTableConfig="contentTableConfig"
-      page-name="property"
+      page-name="partyWork"
       ref="pageContentRef"
       @newBtnClick="handleNewData"
       @editBtnClick="handleEditData"
       @batchRemoveClick="handleBatchRemoveClick"
-      ><template #name>新建财务</template>
+      ><template #name>新建党务</template>
       <template #content="scope">
         <el-link type="primary" @click="handleEditNote(scope.row)"
           >查看详情</el-link
@@ -25,9 +25,9 @@
       </template>
     </page-content>
     <page-modal
-      title="编辑财务"
+      title="编辑党务"
       :modalConfig="modalConfig"
-      page-name="property"
+      page-name="partyWork"
       ref="pageModalRef"
       :default-info="defaultInfo"
     ></page-modal>

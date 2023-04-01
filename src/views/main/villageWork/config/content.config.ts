@@ -1,7 +1,7 @@
 const contentTableConfig = {
-  title: "财务列表",
+  title: "村务列表",
   propList: [
-    { prop: "art_id", label: "财务ID", minWidth: "60" },
+    { prop: "art_id", label: "村务ID", minWidth: "60" },
     { prop: "title", label: "标题", minWidth: "160" },
     { prop: "content", label: "详情", minWidth: "60", slotName: "content" },
     { prop: "comment", label: "评论", minWidth: "60", slotName: "comment" },
