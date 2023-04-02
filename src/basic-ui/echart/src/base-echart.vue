@@ -12,8 +12,6 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, withDefaults, defineProps, watchEffect } from "vue"
-import { EChartsOption } from "echarts"
-
 import { CfCard } from "@/basic-ui/card"
 import useEchart from "@/hooks/useEchart"
 
@@ -29,7 +27,7 @@ import useEchart from "@/hooks/useEchart"
 const props = withDefaults(
   defineProps<{
     // 配置的类型
-    options: EChartsOption
+    options: any
     title: string
     width?: string
     height?: string

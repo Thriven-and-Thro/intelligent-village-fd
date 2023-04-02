@@ -1,5 +1,9 @@
 const userMenusConfig = [
   {
+    icon: "PieChart",
+    chinaName: "大数据面板"
+  },
+  {
     icon: "ChatDotRound",
     chinaName: "反馈管理"
   },
@@ -16,7 +20,7 @@ const userMenusConfig = [
     chinaName: "财务管理"
   },
   {
-    icon: "Tickets",
+    icon: "Memo",
     chinaName: "村务管理"
   }
 ]
