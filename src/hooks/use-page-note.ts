@@ -8,6 +8,7 @@ export function usePageNote() {
 
   const handleEditNote = (item: any) => {
     defaultnote.value = { ...item }
+
     if (pageNoteRef.value) {
       pageNoteRef.value.dialogVisible = true
     }

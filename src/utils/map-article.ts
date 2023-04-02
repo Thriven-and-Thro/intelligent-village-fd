@@ -1,6 +1,6 @@
 export const mapArticle: any = {
-  project: 1,
-  property: 2,
-  villageWork: 3,
-  partyWork: 4
+  project: 2,
+  property: 3,
+  villageWork: 4,
+  partyWork: 1
 }

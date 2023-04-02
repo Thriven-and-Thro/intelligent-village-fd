@@ -65,6 +65,8 @@ export default defineComponent({
       () => props.defaultInfo,
       (newValue) => {
         for (const item of props.modalConfig?.formItems) {
+          // console.log(formData[`${item.field}`], newValue[`${item.field}`])
+
           formData[`${item.field}`] = newValue[`${item.field}`]
         }
       }

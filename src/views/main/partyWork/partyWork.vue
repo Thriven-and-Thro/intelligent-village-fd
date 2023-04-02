@@ -33,7 +33,7 @@
     ></page-modal>
     <note
       :modalConfig="modalConfig"
-      page-name="property"
+      page-name="partyWork"
       ref="pageNoteRef"
       :default-info="defaultnote"
     ></note>

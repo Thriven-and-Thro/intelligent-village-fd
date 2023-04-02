@@ -33,7 +33,7 @@
     ></page-modal>
     <note
       :modalConfig="modalConfig"
-      page-name="property"
+      page-name="villageWork"
       ref="pageNoteRef"
       :default-info="defaultnote"
     ></note>

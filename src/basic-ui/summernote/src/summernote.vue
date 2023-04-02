@@ -45,8 +45,15 @@ export default defineComponent({
       )
       // console.log(self.value, "self.value")
       //初始赋值
+
       $("#" + self.id).summernote("code", self.value)
     })
+  },
+  watch: {
+    value(newValue) {
+      var self = this
+      $("#" + self.id).summernote("code", self.value)
+    }
   },
   methods: {
     summernoteInit() {
