@@ -57,7 +57,7 @@ const useLoginStore = defineStore("login", () => {
       await addMainRoute()
 
       // 跳转至首页
-      router.push("/main/feedback")
+      router.push("/main/dashBoard")
     } catch {
       ElMessage.error("账号或密码错误")
     }

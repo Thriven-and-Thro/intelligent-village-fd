@@ -46,7 +46,7 @@ router.beforeEach((to) => {
 
   // /main默认到第一个路由
   if (to.path === "/main") {
-    return "/main/feedback"
+    return "/main/dashBoard"
   }
 })
 
