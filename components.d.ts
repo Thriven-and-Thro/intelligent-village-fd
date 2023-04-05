@@ -43,7 +43,6 @@ declare module '@vue/runtime-core' {
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
     LineEchart: typeof import('./src/components/page-echart/src/line-echart.vue')['default']
-    MapEchart: typeof import('./src/components/page-echart/src/map-echart.vue')['default']
     NavHeader: typeof import('./src/components/nav-header/src/nav-header.vue')['default']
     NavHeaderInfo: typeof import('./src/components/nav-header/src/nav-header-info.vue')['default']
     NavMenu: typeof import('./src/components/nav-menu/src/nav-menu.vue')['default']
@@ -52,7 +51,6 @@ declare module '@vue/runtime-core' {
     PageModal: typeof import('./src/components/page-modal/src/page-modal.vue')['default']
     PageSearch: typeof import('./src/components/page-search/src/page-search.vue')['default']
     PieEchart: typeof import('./src/components/page-echart/src/pie-echart.vue')['default']
-    RoseEchart: typeof import('./src/components/page-echart/src/rose-echart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
