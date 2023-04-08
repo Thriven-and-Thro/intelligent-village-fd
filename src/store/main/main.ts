@@ -12,7 +12,6 @@ import {
 import formatTime from "@/global/register-properties"
 import { searchPageListData } from "@/service/main/search"
 import { mapArticle } from "@/utils/map-article"
-import { batchRemovePageData } from "@/service/main/batchRemove"
 
 const useMainStore = defineStore("main", () => {
   // 建立对象是为了方便动态获取、写入数据
@@ -36,8 +35,6 @@ const useMainStore = defineStore("main", () => {
     limit: 10,
     record: {}
   })
-
-  const aid = localCache.getCache("userInfo").aid
 
   // 动态写入
   function setStoreList(name: string, data: any[]) {
@@ -106,8 +103,11 @@ const useMainStore = defineStore("main", () => {
 
     payload.queryInfo.record = lastQueryInfoRecord
 
+    const aid = localCache.getCache("userInfo").aid
+
     const pageResult = await searchPageListData({
       table: pageName,
+      aid,
       ...requestData
     })
 
@@ -117,12 +117,14 @@ const useMainStore = defineStore("main", () => {
   }
 
   async function againRequestPageData(pageName: string, query: any = {}) {
+    const aid = localCache.getCache("userInfo").aid
+
     await searchPageListAction({
       pageName,
       queryInfo: {
         offset: pageListInfo.offset,
         limit: pageListInfo.limit,
-        aid: aid,
+        aid,
         record: pageListInfo.record,
         ...query
       }
@@ -152,6 +154,8 @@ const useMainStore = defineStore("main", () => {
         newData[key] = Number(newData[key])
       }
     }
+
+    const aid = localCache.getCache("userInfo").aid
 
     await createPageData(pageUrl, {
       ...newData,
